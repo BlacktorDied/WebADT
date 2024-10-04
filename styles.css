@@ -1,0 +1,61 @@
+h1, h2, p {
+    margin: 0;
+}
+
+ul {
+    margin: 0 0 20px;
+    padding: 0;
+}
+
+li {
+    margin: 0 0 0 20px;
+}
+
+.main {
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.title {
+    margin: 20px 0;
+    font-size: 60px;
+    font-weight: 700;
+    line-height: 1.1;
+    color: #333;
+    text-align: center;
+}
+
+.description {
+    margin: 0 auto 20px;
+    max-width: 600px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    color: #666;
+}
+
+.wrapper {
+    margin: 100px 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+}
+
+.image {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.name,
+.hobbies,
+.skills {
+    margin: 0 0 10px;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.1;
+    color: #333;
+}
