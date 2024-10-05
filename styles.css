@@ -1,61 +1,200 @@
-h1, h2, p {
+@font-face {
+    font-family: 'Inter';
+    src: url('../fonts/Inter/Inter-VariableFont_opsz,wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+}
+
+/* Common Styles */
+body {
+    margin: 0 24px;
+}
+
+h1, h2, p, li {
+    font-family: 'Inter', sans-serif;
     margin: 0;
 }
 
-ul {
-    margin: 0 0 20px;
-    padding: 0;
+h2 {
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 1.25;
 }
 
-li {
-    margin: 0 0 0 20px;
+.textWrapper {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 18px;
 }
+
+.iconWrapper {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 9px;
+}
+
+.icon {
+    height: 24px;
+}
+
+.blueText {
+    padding: 5px 20px;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 1.25;
+    border-radius: 20px;
+    color: #fff;
+    background: #134874;
+}
+
+/* Specific Styles */
 
 .main {
-    padding: 20px;
-    background-color: #f9f9f9;
+    background: #134874;
 }
 
-.title {
-    margin: 20px 0;
-    font-size: 60px;
-    font-weight: 700;
-    line-height: 1.1;
-    color: #333;
-    text-align: center;
+.card {
+    margin: 130px auto 0;
+    padding: 70px;
+    max-width: 1056px;
+    border-radius: 20px;
+    background: #fff;
+    box-sizing: border-box;
 }
 
-.description {
-    margin: 0 auto 20px;
-    max-width: 600px;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 1.5;
-    text-align: center;
-    color: #666;
+.logo {
+    width: 345px;
 }
 
 .wrapper {
-    margin: 100px 0 0;
+    margin: 60px 0 0;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    align-items: center;
     gap: 50px;
 }
 
-.image {
-    width: 200px;
-    height: 200px;
+.photo {
+    max-width: 356px;
+    height: 500px;
     object-fit: cover;
-    border-radius: 20px;
 }
 
-.name,
-.hobbies,
-.skills {
-    margin: 0 0 10px;
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 1.1;
-    color: #333;
+.texts {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 48px;
+    line-height: 1.21;
+    text-transform: uppercase;
+}
+
+.status {
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 1.2;
+    color: #134874;
+}   
+
+.list {
+    margin: 10px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.li {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+a {
+    height: 24px;
+}
+
+@media (max-width: 1023px) {
+    /* Common Styles */
+    body {
+        margin: 0 16px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 1.67;
+    }
+
+    .textWrapper {
+        gap: 9px;
+    }
+
+    .icon {
+        height: 18px;
+    }
+
+    .blueText {
+        padding: 5px 10px;
+        font-size: 8px;
+        line-height: 1.25;
+        border-radius: 10px;
+    }
+    
+    /* Specific Styles */
+    .card {
+        margin: 130px auto 0;
+        padding: 20px;
+        min-width: 268px;
+    }
+
+    .logo {
+        width: 235px;
+    }
+
+    .wrapper {
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 40px;
+    }
+
+    .photo {
+        max-width: 343px;
+        width: 100%;
+        height: auto;
+    }
+
+    .texts {
+        gap: 12px;
+    }
+
+    .title {
+        font-size: 36px;
+    }
+
+    .status {
+        font-size: 12px;
+    }
+
+    .list {
+        margin: 5px 0 0;
+        padding: 0 0 0 20px;
+        gap: 5px;
+    }
+
+    li {
+        font-size: 10px;
+        line-height: 1.8;
+    }
+
+    a {
+        height: 18px;
+    }
+
+    .email {
+        font-size: 8px;
+    }
 }
