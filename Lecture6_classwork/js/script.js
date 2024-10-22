@@ -32,25 +32,27 @@ const celestialObjects = [
         orbitSpeed: 365,
         position: 20,
         zIndex: 3,
+        isMovingLeft: true,
     },
-    // {
-    //     name: "Mars",
-    //     img: "./img/mars.png",
-    //     text: [
-    //         "Title: Mars",
-    //         "Type: Terrestrial planet",
-    //         "Diameter: 6 779 kilometers",
-    //         "Weight: 6.39e23 kilograms",
-    //         "Population: 0",
-    //     ],
-    //     class: "planet",
-    //     id: "mars",
-    //     color: "#a16746",
-    //     fontSize: "12px",
-    //     orbitSpeed: 687,
-    //     position: 10,
-    //     zIndex: 4,
-    // },
+    {
+        name: "Mars",
+        img: "./img/mars.png",
+        text: [
+            "Title: Mars",
+            "Type: Terrestrial planet",
+            "Diameter: 6 779 kilometers",
+            "Weight: 6.39e23 kilograms",
+            "Population: 0",
+        ],
+        class: "planet",
+        id: "mars",
+        color: "#a16746",
+        fontSize: "12px",
+        orbitSpeed: 687,
+        position: 10,
+        zIndex: 4,
+        isMovingLeft: true,
+    },
 ];
 
 // Create celestial objects in the DOM
@@ -90,37 +92,42 @@ celestialObjects.forEach((object) => {
 // Planets animations
 let isHover = false;
 
-function planetAnimation() {
-    celestialObjects.forEach((object) => {
-        if (object.class === "planet" && isHover === false) {
-            const left = (1440 * object.position) / 100;
-            const right = (1440 * (100 - object.position)) / 100
-            const distance = Math.abs(left - right);
+function planetAnimation(object) {
+    const left = (visualViewport.width * object.position) / 100;
+    const right = (visualViewport.width * (100 - object.position)) / 100;
+    const distance = Math.abs(left - right);
+    const currentPos =
+        $(`#${object.id}`).position().left + $(`#${object.id}`).width() / 2;
 
-            const realSpeed = object.orbitSpeed * 24 * 60 * 60 * 1000; //Real time speed
-            const playbackSpeed = 5000000;
-            const speed = realSpeed / playbackSpeed;
-            
-            $(`#${object.id}`)
-                .animate(
-                    {
-                        left: `${100 - object.position}%`,
-                        zIndex: `${8 - object.zIndex}`,
-                    },
-                    speed
-                )
-                .animate(
-                    {
-                        left: `${object.position}%`,
-                        zIndex: `${8 + object.zIndex}`,
-                    },
-                    speed,
-                    function () {
-                        planetAnimation();
-                    }
-                );
-        }
-    });
+    const realSpeed = object.orbitSpeed * 24 * 60 * 60 * 1000; //Real time speed
+    const playbackSpeed = 5000000;
+    const speed = realSpeed / playbackSpeed;
+
+    if (object.isMovingLeft) {
+        $(`#${object.id}`).animate(
+            {
+                left: `${100 - object.position}%`,
+                zIndex: `${8 - object.zIndex}`,
+            },
+            speed / (distance / (right - currentPos)),
+            function () {
+                object.isMovingLeft = false;
+                planetAnimation(object);
+            }
+        );
+    } else {
+        $(`#${object.id}`).animate(
+            {
+                left: `${object.position}%`,
+                zIndex: `${8 + object.zIndex}`,
+            },
+            speed / (distance / Math.abs(left - currentPos)),
+            function () {
+                object.isMovingLeft = true;
+                planetAnimation(object);
+            }
+        );
+    }
 }
 
 // Description animation and hover event
@@ -138,11 +145,19 @@ $(".celestialObject").hover(
                 $(this).css("display", "none");
             });
         isHover = false;
-        planetAnimation();
+        celestialObjects.forEach((object) => {
+            if (object.class === "planet") {
+                planetAnimation(object);
+            }
+        });
     }
 );
 
 // Initialize celestial object animation (JQuery)
 $(document).ready(function () {
-    planetAnimation();
+    celestialObjects.forEach((object) => {
+        if (object.class === "planet" && isHover === false) {
+            planetAnimation(object);
+        }
+    });
 });
