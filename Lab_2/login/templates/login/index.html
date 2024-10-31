@@ -1,0 +1,45 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Project</title>
+    <link rel="stylesheet" href="{% static 'login/css/styles.css' %}">
+    <script src="{% static 'login/js/script.js' %}" defer></script>
+</head>
+<body>
+    <section class="main">
+        <div class="wrapper">
+            <h1 class="title">Log In</h1>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+
+                {% if form.non_field_errors %}
+                    <div class="error">{{ form.non_field_errors }}</div>
+                {% endif %}
+
+                <div class="reqWrapper">
+                    <p class="reqText">
+                        Your password must:
+                    </p>
+                    <ul class="requirements">
+                        <li>Be at least 8 characters long.</li>
+                        <li>Contain at least one number.</li>
+                        <li>Include at least one special character (e.g., @, #, $...)</li>
+                    </ul>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+            {% if show_popup %}
+                <script>
+                    document.addEventListener("DOMContentLoaded", function() {
+                        showPopup("{{ name }}", "{{ surname }}");
+                    });
+                </script>
+            {% endif %}
+        </div>
+    </section>
+</body>
+</html>
