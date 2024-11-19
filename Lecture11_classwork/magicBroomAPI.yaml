@@ -1,0 +1,118 @@
+openapi: 3.0.0
+servers:
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/ALEXDOZORIN_1/magicBroom/1.0.0
+info:
+  description: This is a magical broomstick inventory API for wizards and witches.
+  version: "1.0.0"
+  title: Magical Broomstick Inventory API
+  contact:
+    email: owlpost@magicbroomshop.com
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+tags:
+  - name: admins
+    description: Secured Admin-only calls for enchanted inventory management
+  - name: wizards
+    description: Operations available to registered magical users
+paths:
+  /broomsticks:
+    get:
+      tags:
+        - wizards
+      summary: Searches magical broomstick inventory
+      operationId: searchBroomsticks
+      description: |
+        By passing in the appropriate options, you can search for
+        available magical broomsticks in the system.
+      parameters:
+        - in: query
+          name: searchString
+          description: Pass an optional search string to look up specific broomsticks
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: skip
+          description: Number of records to skip for pagination
+          schema:
+            type: integer
+            format: int32
+            minimum: 0
+        - in: query
+          name: limit
+          description: Maximum number of broomsticks to return
+          schema:
+            type: integer
+            format: int32
+            minimum: 0
+            maximum: 50
+      responses:
+        '200':
+          description: Broomstick search results matching criteria
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Broomstick'
+        '400':
+          description: Bad input parameter
+    post:
+      tags:
+        - admins
+      summary: Adds a magical broomstick to inventory
+      operationId: addBroomstick
+      description: Adds a new magical broomstick to the system
+      responses:
+        '201':
+          description: Broomstick created successfully
+        '400':
+          description: 'Invalid input, object invalid'
+        '409':
+          description: An existing broomstick with the same ID already exists
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Broomstick'
+        description: Details of the magical broomstick to add
+components:
+  schemas:
+    Broomstick:
+      type: object
+      required:
+        - id
+        - name
+        - manufacturer
+        - releaseDate
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: b290f1ee-6c54-4b01-90e6-d701748f0851
+        name:
+          type: string
+          example: Nimbus 2000
+        releaseDate:
+          type: string
+          format: date-time
+          example: '1991-09-01T10:00:00.000Z'
+        manufacturer:
+          $ref: '#/components/schemas/Manufacturer'
+    Manufacturer:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          example: Nimbus Racing Brooms Co.
+        homePage:
+          type: string
+          format: url
+          example: 'https://www.nimbusracingbrooms.com'
+        phone:
+          type: string
+          example: +44-123-456-7890
