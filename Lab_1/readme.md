@@ -32,19 +32,19 @@ Lab_1/
 
 ## Installation
 1. Clone the repository:
-```
+```bash
 git clone https://github.com/BlacktorDied/WebADT.git
 cd Lab_1
 ```
 
 2. Install the dependencies:
-```
+```bash
 npm install
 ```
 
 ## How to run
 1. Start the server:
-```
+```bash
 npm start
 ```
 
