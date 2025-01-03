@@ -1,0 +1,51 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       Int    @id @default(autoincrement())
+  username String @unique
+  password String
+}
+
+model Facility {
+  facility_id Int        @id
+  type        String?
+  location    String?
+  description String?
+  logo        String
+  employees   Employee[]
+  scps        SCP[]     
+}
+
+model SCP {
+  scp_id      Int     @id
+  name        String?
+  objectClass String?
+  containment String?
+  description String?
+  photo       String?
+  facility_id Int
+
+  facility Facility @relation(fields: [facility_id], references: [facility_id], onDelete: Cascade)
+}
+
+model Employee {
+  emp_id      Int       @id @default(autoincrement())
+  name        String
+  dob         DateTime?
+  sex         String?
+  position    String
+  description String?
+  facility_id Int
+
+  facility Facility @relation(fields: [facility_id], references: [facility_id], onDelete: Cascade)
+}

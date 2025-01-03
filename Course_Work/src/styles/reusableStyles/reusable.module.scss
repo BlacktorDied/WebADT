@@ -1,0 +1,211 @@
+.filterSort {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgb(0 0 0 / 10%);
+    display: flex;
+    justify-content: space-between;
+    margin-top: 24px;
+    padding: 12px;
+
+    select {
+        border: none;
+        border-bottom: 1px solid #5c5c5c;
+        outline: none;
+    }
+
+    &__sort {
+        column-gap: 12px;
+        display: flex;
+    }
+
+    @media (width <= 1023px) {
+        flex-direction: column;
+        row-gap: 24px;
+
+        &__sort {
+            flex-direction: column;
+            row-gap: 12px;
+        }
+    }
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgb(0 0 0 / 10%);
+    justify-self: center;
+    padding: 24px;
+    transition: transform 0.3s;
+
+    &:hover {
+        border: 1px solid #5c5c5c;
+        transform: translateY(-8px);
+    }
+
+    &__top {
+        column-gap: 4px;
+        display: flex;
+        justify-content: right;
+        margin-bottom: 24px;
+
+        svg {
+            cursor: pointer;
+            opacity: 0.5;
+            transition: all 0.3s ease;
+            width: 24px;
+        }
+
+        svg#{&}Edit {
+            &_disabled {
+                cursor: not-allowed;
+                opacity: 0.3;
+            }
+
+            &:not(&_disabled):hover {
+                opacity: 1;
+                transform: scale(1.1);
+
+                path {
+                    fill: orange;
+                }
+            }
+        }
+
+        svg#{&}Delete {
+            &_disabled {
+                cursor: not-allowed;
+                opacity: 0.3;
+            }
+
+            &:not(&_disabled):hover {
+                opacity: 1;
+                transform: scale(1.1);
+
+                path {
+                    fill: red;
+                }
+            }
+        }
+    }
+
+    &__add {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        min-height: 150px;
+
+        &Image {
+            background-color: #b5b5b5;
+            border-radius: 50%;
+            height: 48px;
+            opacity: 0.8;
+            padding: 12px;
+            transition: all 0.3s ease;
+            width: 48px;
+
+            &:hover {
+                opacity: 1;
+                transform: scale(1.1);
+            }
+        }
+    }
+
+    @media (width <= 1023px) {
+        margin: auto;
+        max-width: 500px;
+
+        &__add {
+            width: 100%;
+        }
+    }
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+
+    &__wrapper {
+        animation: appear 0.6s ease;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgb(0 0 0 / 10%);
+        color: #000;
+        margin-bottom: 24px;
+        padding: 24px;
+        text-decoration: none;
+        width: 100%;
+    }
+
+    &__close {
+        display: block;
+        margin-bottom: 24px;
+        margin-left: auto;
+        opacity: 0.5;
+        transition: all 0.3s ease;
+        width: 24px;
+
+        &:hover {
+            opacity: 1;
+            transform: scale(1.1);
+
+            path {
+                fill: red;
+            }
+        }
+    }
+
+    label {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        margin: 12px 0 0;
+
+        &:nth-child(1) {
+            margin-top: 0;
+        }
+    }
+
+    &__requried::after {
+        color: red;
+        content: "*";
+    }
+
+    input,
+    select {
+        border: none;
+        border-bottom: 1px solid #5c5c5c;
+        outline: none;
+    }
+
+    textarea {
+        border: 1px solid #5c5c5c;
+        border-radius: 8px;
+        height: 100px;
+        max-width: 440px;
+        padding: 12px;
+        resize: none;
+    }
+
+    button {
+        background-color: #000;
+        border: none;
+        border-radius: 8px;
+        color: #fff;
+        cursor: pointer;
+        margin: 24px auto 0;
+        padding: 12px;
+        transition: all 0.3s ease;
+        width: 50%;
+
+        &:hover {
+            background-color: #5c5c5c;
+        }
+    }
+
+    @media (width <= 1023px) {
+        &__wrapper {
+            margin: auto;
+            max-width: 500px;
+        }
+    }
+}

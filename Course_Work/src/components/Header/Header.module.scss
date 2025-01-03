@@ -1,0 +1,163 @@
+.main {
+    align-items: center;
+    background-color: #f1f1f1;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    width: 100vw;
+
+    &__logo {
+        transition: all 0.5s ease;
+        width: 80px;
+
+        &:hover {
+            transform: rotate(180deg);
+        }
+    }
+
+    &__wrapper {
+        align-items: center;
+        column-gap: 20px;
+        display: flex;
+
+        a {
+            color: black;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+
+            &:hover {
+                color: #5c5c5c;
+            }
+        }
+    }
+
+    &__logIn,
+    &__logOut {
+        background-color: #000;
+        border-radius: 8px;
+        color: #fff;
+        cursor: pointer;
+        padding: 8px;
+        transition: all 0.3s ease;
+
+        &:hover {
+            background-color: #5c5c5c;
+        }
+    }
+
+    @media (width <= 1023px) {
+        column-gap: 24px;
+        padding: 16px;
+
+        &__logo {
+            width: 40px;
+        }
+
+        &__wrapper {
+            flex-wrap: wrap;
+            font-size: 14px;
+            gap: 8px;
+            justify-content: end;
+            line-height: 1.56;
+        }
+
+        &__logIn,
+        &__logOut {
+            border-radius: 8px;
+        }
+    }
+}
+
+.form {
+    align-items: center;
+    background-color: rgb(#000, 0.9);
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    z-index: 2;
+
+    &__close {
+        display: block;
+        margin-left: auto;
+        opacity: 0.5;
+        transition: all 0.3s ease;
+        width: 24px;
+
+        &:hover {
+            opacity: 1;
+            transform: scale(1.1);
+
+            path {
+                fill: red;
+            }
+        }
+    }
+
+    input {
+        border: 1px solid #000;
+        border-radius: 8px;
+        padding: 8px;
+        width: 100%;
+
+        &::after {
+            color: red;
+            content: "*";
+        }
+    }
+
+    button {
+        background-color: #000;
+        border: none;
+        border-radius: 8px;
+        color: #fff;
+        cursor: pointer;
+        padding: 12px;
+        transition: all 0.3s ease;
+        width: 100px;
+
+        &:hover {
+            background-color: #5c5c5c;
+        }
+    }
+
+    &__logIn,
+    &__signUp {
+        align-items: center;
+        background-color: #fff;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        row-gap: 20px;
+        width: 300px;
+    }
+
+    &__options {
+        align-items: center;
+        column-gap: 20px;
+        display: flex;
+
+        & > div {
+            background-color: #fff;
+            border: none;
+            border-radius: 8px;
+            color: #000;
+            cursor: pointer;
+            padding: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+            width: 100px;
+
+            &:hover {
+                background-color: #5c55c5;
+                color: #fff;
+            }
+        }
+    }
+}

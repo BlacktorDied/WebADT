@@ -1,0 +1,12 @@
+.main {
+    align-items: center;
+    background-color: #f1f1f1;
+    display: flex;
+    padding: 20px;
+
+    @media (width <= 1023px) {
+        font-size: 14px;
+        line-height: 1.56;
+        padding: 16px;
+    }
+}
