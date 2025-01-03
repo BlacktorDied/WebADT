@@ -49,7 +49,7 @@ First, run the development server:
 ## 2. Navigate to the Project Directory
 
 ```Bash
-cd individual-project-2
+cd WebADT/Course_Work
 ```
 
 ## 3. Install Dependencies
