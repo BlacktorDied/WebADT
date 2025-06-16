@@ -58,6 +58,17 @@ cd WebADT/Course_Work
 npm install
 ```
 
+## 5. Enviroment Variables
+First, create .env folder in the root of project (same level as `package.json`).
+In the .env folder we create DATABASE_URL="file:<file_name>" (For this project it is dev.db)
+Finally, we need to run this code:
+
+```
+npx prisma migrate reset
+```
+
+And pressing y (Yes)
+
 ## 4. Start the development
 
 ```Bash
