@@ -59,15 +59,15 @@ npm install
 ```
 
 ## 5. Enviroment Variables
-First, create .env folder in the root of project (same level as `package.json`).
-In the .env folder we create DATABASE_URL="file:<file_name>" (For this project it is dev.db)
-Finally, we need to run this code:
+1. First, create .env folder in the root of project (same level as `package.json`).
+2. In the .env folder we create DATABASE_URL="file:<file_name>" (For this project it is dev.db)
+3. Finally, we need to run this code:
 
 ```
 npx prisma migrate reset
 ```
 
-And pressing y (Yes)
+4. And enter y (Yes)
 
 ## 4. Start the development
 
